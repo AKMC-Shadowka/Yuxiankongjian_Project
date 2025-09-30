@@ -4,7 +4,7 @@
 
 ## Move()
 
-每一帧移动
+每一帧WASD移动
 
 
 ## OnTriggerEnter2D(Collider other)
