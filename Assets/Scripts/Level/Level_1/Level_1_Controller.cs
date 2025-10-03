@@ -4,35 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class Level_1_Controller : MonoBehaviour
+public class Level_1_Controller : Level_Controller
 {
 
 
     public GameObject Current_Character;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
-
-
-
-
-
-
-
-
-
+    //关于如何退出这个界面返回Main_Menu
     public void Exit_Button_Click()
     {
         StartCoroutine(Back_To_Main_Menu());

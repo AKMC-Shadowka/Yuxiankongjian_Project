@@ -77,48 +77,33 @@ public class Player : MonoBehaviour
 
         Vector2 New_Pos=new Vector2(Post_Position.x,Post_Position.y);
 
+
+        float New_X=0f;
+        float New_Y=0f;
+
         if (!Gravity_On)
         {
             if (Input.GetKey(KeyCode.W) && Effective_W)
             {
-
-                float New_X = Current_Transform.position.x;
-                float New_Y = Current_Transform.position.y + 0.05f;
-                
-
-                New_Pos = new Vector2(New_X, New_Y);
+                New_Y += 0.05f;
             }
 
             if (Input.GetKey(KeyCode.S) && Effective_S)
             {
-
-                float New_X = Current_Transform.position.x;
-                float New_Y = Current_Transform.position.y - 0.05f;
-                
-
-                New_Pos = new Vector2(New_X, New_Y);
+                New_Y -= 0.05f;
             }
         }
 
         if (Input.GetKey(KeyCode.A) && Effective_A)
         {
-
-            float New_X = Current_Transform.position.x - 0.05f;
-            float New_Y = Current_Transform.position.y;
-            
-
-            New_Pos = new Vector2(New_X, New_Y);
+            New_X -= 0.05f;
         }
 
         if (Input.GetKey(KeyCode.D) && Effective_D)
         {
-
-            float New_X = Current_Transform.position.x + 0.05f;
-            float New_Y = Current_Transform.position.y;
-            
-
-            New_Pos = new Vector2(New_X, New_Y);
+            New_X += 0.05f;
         }
+        New_Pos = new Vector2(rb.position.x + New_X, rb.position.y + New_Y);
 
         rb.position=new Vector2(New_Pos.x,New_Pos.y);
     }
