@@ -26,9 +26,13 @@ public class Player : MonoBehaviour
 
     public bool On_Ground;//是否有地面作为支持
 
-    public float jumpForce = 1f;
+    public float jumpForce = 0.1f;//跳跃系数
     public bool isJumping;
     public float jumpTimeCounter;
+
+    private float Move_Speed=0.03f;//移动速度系数
+
+    private float Gravity_Scale = 2.25f;//重力系数
 
     void Start()
     {
@@ -85,23 +89,23 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W) && Effective_W)
             {
-                New_Y += 0.05f;
+                New_Y += Move_Speed;
             }
 
             if (Input.GetKey(KeyCode.S) && Effective_S)
             {
-                New_Y -= 0.05f;
+                New_Y -= Move_Speed;
             }
         }
 
         if (Input.GetKey(KeyCode.A) && Effective_A)
         {
-            New_X -= 0.05f;
+            New_X -= Move_Speed;
         }
 
         if (Input.GetKey(KeyCode.D) && Effective_D)
         {
-            New_X += 0.05f;
+            New_X += Move_Speed;
         }
         New_Pos = new Vector2(rb.position.x + New_X, rb.position.y + New_Y);
 
@@ -169,7 +173,7 @@ public class Player : MonoBehaviour
             if (!Gravity_On)
             {
                 Gravity_On = true;
-                rb.gravityScale = 1f;
+                rb.gravityScale =Gravity_Scale;
             }
             else
             {
@@ -196,7 +200,7 @@ public class Player : MonoBehaviour
 
     void Jump(Rigidbody2D rb)
     {
-        float jumpTime = 0.5f;//跳跃按键持续最大时间
+        float jumpTime = 0.08f;//跳跃按键持续最大时间
  
         // 按下跳跃键
         if (Input.GetKeyDown(KeyCode.W) && On_Ground)

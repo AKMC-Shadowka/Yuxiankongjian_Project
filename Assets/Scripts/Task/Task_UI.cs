@@ -19,10 +19,12 @@ public class Task_UI : MonoBehaviour
 
     private List<GameObject> Current_List_UI;//当前任务列表侧克隆出来的UI组件
 
+    private int Current_Task_Index;//当前选择的任务编号
+
 
     public void Start()
     {
-        
+        Current_Task_Index = 0;
     }
 
 
@@ -66,6 +68,9 @@ public class Task_UI : MonoBehaviour
         //任务的详细信息更新
         Task_Message_Update(0);
 
+        //当前任务的条件更新
+        Task_Condition_Update();
+
     }
 
 
@@ -95,11 +100,41 @@ public class Task_UI : MonoBehaviour
 
     public void Task_Message_Update(int index)
     {
+        //修改当前显示的任务序号
+        Current_Task_Index = index;
+
         List<Task> Current_Task_List = Task_Container_Component.Get_Available_Task_List();
 
         Text Task_Info = gameObject.transform.GetChild(2).GetChild(0).gameObject.GetComponent<Text>();
 
         Task_Info.text = Current_Task_List[index].Task_Description;
+    }
+
+    public void Task_Condition_Update()
+    {
+
+        List<Task> Current_Task_List = Task_Container_Component.Get_Available_Task_List();
+
+        Text Task_Condition = gameObject.transform.GetChild(2).GetChild(1).gameObject.GetComponent<Text>();
+
+        Task Current_Task = Current_Task_List[Current_Task_Index];
+        
+        for (int i=0;i<Current_Task.Task_Completed.Count;i++)
+        {
+            bool Is_Completed = Current_Task.Task_Completed[0];
+
+            if(Is_Completed)
+            {
+                continue;
+            }
+            else
+            {
+                Task_Condition.text = Current_Task.Task_Requirements[i];
+                break;
+            }
+        }
+
+
     }
 
 
