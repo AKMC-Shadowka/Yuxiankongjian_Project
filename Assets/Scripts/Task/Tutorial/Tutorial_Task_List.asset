@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Current_Task_List:
   - {fileID: 11400000, guid: 5eb4c930c05e8a9498cbb46dfff0bd26, type: 2}
+  - {fileID: 11400000, guid: 5c655dde4bea51341b2860427559f237, type: 2}

@@ -9,8 +9,13 @@ public class UI_Controller : MonoBehaviour
     //挂载在Global场景下的Canvas下，可以调度其下所有的UI组件
     public Global_Controller Global_Controller_Component;
 
+    public bool Task_Terminal_Show;
+
     public GameObject Exit_Button;
     public GameObject Main_Menu_Button;
+    public GameObject Task_Button;
+    public GameObject Task_Terminal;
+
 
     public void UI_Refresh()
     {
@@ -20,7 +25,11 @@ public class UI_Controller : MonoBehaviour
         //关于其他按钮的显示问题
         Main_Menu_Button_Refresh();
 
+        //Task按钮的显示
+        Task_Button_Refresh();
 
+        //任务终端的显示
+        Task_Terminal_Refresh();
     }
 
     private void Exit_Button_Refresh()
@@ -35,6 +44,22 @@ public class UI_Controller : MonoBehaviour
         }
     }
 
+    private void Task_Button_Refresh()
+    {
+        if (
+            Global_Controller_Component.Current_Level_Num == 0
+            ||
+            Task_Terminal_Show==true
+            )
+        {
+            Task_Button.SetActive(false);
+        }
+        else
+        {
+            Task_Button.SetActive(true);
+        }
+    }
+
     private void Main_Menu_Button_Refresh()
     {
         if (Global_Controller_Component.Current_Level_Num != 0)
@@ -45,6 +70,11 @@ public class UI_Controller : MonoBehaviour
         {
             Main_Menu_Button.SetActive(true);
         }
+    }
+
+    private void Task_Terminal_Refresh()
+    {
+        Task_Terminal.SetActive(Task_Terminal_Show);
     }
 
 
