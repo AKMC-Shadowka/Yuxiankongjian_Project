@@ -21,21 +21,21 @@ public class Player : MonoBehaviour
 
     // Start is called before the first frame update
 
-    public float Accelerate = 0f;
-    public float Speed = 0f;
-
     public bool On_Ground;//是否有地面作为支持
 
-    public float jumpForce = 0.1f;//跳跃系数
+    public float jumpForce = 0.01f;//跳跃系数
     public bool isJumping;
     public float jumpTimeCounter;
 
-    private float Move_Speed=0.03f;//移动速度系数
+    private float Move_Speed=0.1f;//移动速度系数
 
     private float Gravity_Scale = 2.25f;//重力系数
 
+    private float jumpTime = 0.5f;//跳跃按键持续最大时间
+
     void Start()
     {
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         Effective_W = true;
         Effective_A = true;
         Effective_S = true;
@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
 
         Effective_Move = true;
         Gravity_On = false;
+
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     // Update is called once per frame
@@ -187,21 +189,26 @@ public class Player : MonoBehaviour
     void CheckGrounded()
     {
         // 这里实现的地面检测逻辑
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
-        if (hit.collider != null)
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1f);
+        if (hits.Length > 0)
         {
-            On_Ground = true;
+            foreach (RaycastHit2D hit in hits)
+            {
+                // 遍历每一个被击中的物体
+                //Debug.Log($"击中了物体：{hit.collider.gameObject.name}，距离是：{hit.distance}");
+                if (hit.collider.gameObject == gameObject)
+                {
+                    continue;
+                }
+                On_Ground = true;
+                return;
+            }
         }
-        else 
-        { 
-            On_Ground = false;
-        }
+        On_Ground = false;
     }
 
     void Jump(Rigidbody2D rb)
-    {
-        float jumpTime = 0.08f;//跳跃按键持续最大时间
- 
+    { 
         // 按下跳跃键
         if (Input.GetKeyDown(KeyCode.W) && On_Ground)
         {

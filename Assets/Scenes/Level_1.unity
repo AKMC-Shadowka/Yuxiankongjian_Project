@@ -304,8 +304,6 @@ MonoBehaviour:
   Effective_S: 0
   Effective_D: 0
   Gravity_On: 0
-  Accelerate: 0
-  Speed: 0
   On_Ground: 0
   jumpForce: 10
   isJumping: 0
