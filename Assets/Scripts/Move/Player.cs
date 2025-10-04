@@ -116,54 +116,13 @@ public class Player : MonoBehaviour
     {
         Debug.Log($"´¥·¢Æ÷´¥·¢£¡Óë {other.gameObject.name} Åö×²");
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            Effective_W = false;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            Effective_A = false;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            Effective_S = false;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            Effective_D = false;
-        }
-
+        
         //Effective_Move = false;
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (Effective_W == false)
-        {
-            Effective_W = true;
-            //return;
-        }
-
-        if (Effective_A == false)
-        {
-            Effective_A = true;
-            //return;
-        }
-
-        if (Effective_S == false)
-        {
-            Effective_S = true;
-            //return;
-        }
-
-        if (Effective_D == false)
-        {
-            Effective_D = true;
-            //return;
-        }
+      
     }
 
     public void Shift_Mode(Rigidbody2D rb)
@@ -174,12 +133,16 @@ public class Player : MonoBehaviour
             {
                 Gravity_On = true;
                 rb.gravityScale =Gravity_Scale;
+
+                
             }
             else
             {
                 Gravity_On = false;
                 rb.gravityScale = 0f;
                 rb.velocity = new Vector2(rb.velocity.x, 0f);
+
+               
             }
         }
     }
