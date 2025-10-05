@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 932953597}
   - component: {fileID: 932953598}
   - component: {fileID: 932953599}
+  - component: {fileID: 932953600}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -600,10 +601,22 @@ MonoBehaviour:
   Effective_S: 0
   Effective_D: 0
   Gravity_On: 0
-  On_Ground: 0
   jumpForce: 10
   isJumping: 0
   jumpTimeCounter: 0
+--- !u!114 &932953600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932953593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e774a64edc63644f93630fca0a0daca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grounded: 0
 --- !u!1 &1064169661
 GameObject:
   m_ObjectHideFlags: 0
