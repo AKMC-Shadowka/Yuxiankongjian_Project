@@ -33,8 +33,13 @@ public class Player : MonoBehaviour
 
     private float jumpTime = 0.5f;//跳跃按键持续最大时间
 
+    public Vector2 Saved_Position;
+
     void Start()
     {
+
+        Saved_Position = gameObject.transform.position;
+
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         Effective_W = true;
         Effective_A = true;
@@ -55,6 +60,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Effective_Move==false)
+        {
+            return;
+        }
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         CheckGrounded();
         if (Gravity_On)
@@ -200,4 +210,14 @@ public class Player : MonoBehaviour
             isJumping = false;
         }
     }
+
+    public void Death_Event()
+    {
+        Debug.Log("Player Is Dead");
+
+        Effective_Move = false;
+
+        GameObject.Find("Canvas").GetComponent<UI_Controller>().Set_Death_Show(true);
+    }
+
 }

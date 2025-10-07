@@ -11,10 +11,14 @@ public class UI_Controller : MonoBehaviour
 
     public bool Task_Terminal_Show;
 
+    public bool Death_Show;
+
     public GameObject Exit_Button;
     public GameObject Main_Menu_Button;
     public GameObject Task_Button;
     public GameObject Task_Terminal;
+
+    public GameObject Death_UI;
 
 
     public void UI_Refresh()
@@ -30,6 +34,9 @@ public class UI_Controller : MonoBehaviour
 
         //任务终端的显示
         Task_Terminal_Refresh();
+
+        //死亡终端显示
+        Death_UI_Refresh();
     }
 
     private void Exit_Button_Refresh()
@@ -75,6 +82,18 @@ public class UI_Controller : MonoBehaviour
     private void Task_Terminal_Refresh()
     {
         Task_Terminal.SetActive(Task_Terminal_Show);
+    }
+
+    private void Death_UI_Refresh()
+    {
+        Death_UI.SetActive(Death_Show);
+    }
+
+
+    public void Set_Death_Show(bool B)
+    {
+        Death_Show = B;
+        UI_Refresh();
     }
 
 
