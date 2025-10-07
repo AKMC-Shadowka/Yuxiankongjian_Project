@@ -5,8 +5,22 @@ using UnityEngine;
 public class Bridge : MonoBehaviour
 {
 
+    public GameObject River_Object;
+
     public BoxCollider2D River;
 
+    public void Start()
+    {
+        StartCoroutine(SetBoxActive());
+    }
+
+    public IEnumerator SetBoxActive()
+    {
+        yield return null;
+
+        River.enabled = true;
+
+    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
