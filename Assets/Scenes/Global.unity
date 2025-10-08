@@ -907,10 +907,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Global_Controller_Component: {fileID: 919123551}
   Task_Terminal_Show: 0
+  Death_Show: 0
   Exit_Button: {fileID: 244034508}
   Main_Menu_Button: {fileID: 608824603}
   Task_Button: {fileID: 1983117694}
   Task_Terminal: {fileID: 2047963492}
+  Death_UI: {fileID: 0}
 --- !u!114 &803028681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -997,7 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7256393a4139f9944849d037a2f7c80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Current_Level_Num: 0
+  Current_Level_Num: 1
 --- !u!1 &934290213
 GameObject:
   m_ObjectHideFlags: 0
