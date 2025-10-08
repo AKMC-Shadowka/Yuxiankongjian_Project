@@ -17,11 +17,10 @@ public class Player : MonoBehaviour
     public bool Effective_A;
     public bool Effective_S;
     public bool Effective_D;
-    public bool Gravity_On;//是否使用重力
 
     // Start is called before the first frame update
 
-    public bool On_Ground;//是否有地面作为支持
+    public bool Gravity_On;//是否有重力
 
     public float jumpForce = 0.01f;//跳跃系数
     public bool isJumping;
@@ -32,6 +31,8 @@ public class Player : MonoBehaviour
     private float Gravity_Scale = 2.25f;//重力系数
 
     private float jumpTime = 0.5f;//跳跃按键持续最大时间
+    private Rigidbody2D rb;
+    private Check_Ground groundChecker;
 
     public Vector2 Saved_Position;
 
@@ -39,8 +40,9 @@ public class Player : MonoBehaviour
     {
 
         Saved_Position = gameObject.transform.position;
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        groundChecker = gameObject.GetComponent<Check_Ground>();
 
-        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         Effective_W = true;
         Effective_A = true;
         Effective_S = true;
@@ -65,18 +67,16 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
-        CheckGrounded();
         if (Gravity_On)
         {
-            Jump(rb);
+            Jump();
         }
-        Move(rb);
-        Shift_Mode(rb);
+        Move();
+        Shift_Mode();
         
     }
 
-    public void Move(Rigidbody2D rb)
+    public void Move()
     {
 
         //Current_Transform.eulerAngles = new Vector3(0f, 0f, 0f);
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
       
     }
 
-    public void Shift_Mode(Rigidbody2D rb)
+    public void Shift_Mode()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -159,31 +159,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    void CheckGrounded()
-    {
-        // 这里实现的地面检测逻辑
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1f);
-        if (hits.Length > 0)
-        {
-            foreach (RaycastHit2D hit in hits)
-            {
-                // 遍历每一个被击中的物体
-                //Debug.Log($"击中了物体：{hit.collider.gameObject.name}，距离是：{hit.distance}");
-                if (hit.collider.gameObject == gameObject)
-                {
-                    continue;
-                }
-                On_Ground = true;
-                return;
-            }
-        }
-        On_Ground = false;
-    }
-
-    void Jump(Rigidbody2D rb)
+    void Jump()
     { 
         // 按下跳跃键
-        if (Input.GetKeyDown(KeyCode.W) && On_Ground)
+        if (Input.GetKeyDown(KeyCode.W) && groundChecker.grounded)
         {
             jumpTimeCounter = jumpTime;
             isJumping = true;
