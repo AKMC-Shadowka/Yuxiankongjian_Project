@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
     public bool On_Ground;//是否有地面作为支持
 
-    public float jumpForce = 0.01f;//跳跃系数
+    public float jumpForce;//跳跃系数
     public bool isJumping;
     public float jumpTimeCounter;
 
