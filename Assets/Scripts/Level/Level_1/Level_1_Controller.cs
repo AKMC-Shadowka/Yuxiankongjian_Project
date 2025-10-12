@@ -32,5 +32,12 @@ public class Level_1_Controller : Level_Controller
 
 
 
+    //关于关卡结束后应该做的事情
+    public override void End_Event()
+    {
+
+        Debug.Log("Enter Level Controller 1 End Event");
+        GameObject.Find("Canvas").GetComponent<Black_UI>().Start_Perform();
+    }
 
 }
