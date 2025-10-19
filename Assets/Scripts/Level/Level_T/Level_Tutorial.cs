@@ -1,18 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Level_Tutorial : MonoBehaviour
+
+public class Level_Tutorial : Level_Controller
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject Current_Character;
+
+    //关于如何退出这个界面返回Main_Menu
+    public void Exit_Button_Click()
     {
-        
+        StartCoroutine(Back_To_Main_Menu());
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator Back_To_Main_Menu()
     {
-        
+        AsyncOperation AO = SceneManager.LoadSceneAsync("Main_Menu", LoadSceneMode.Additive);
+
+        while (!AO.isDone)
+        {
+            yield return null;
+        }
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Main_Menu"));
+
+        SceneManager.UnloadScene("Level_1");
     }
+
+
+
+    //关于关卡结束后应该做的事情
+    public override void End_Event()
+    {
+
+        Debug.Log("Enter Level Controller 1 End Event");
+        GameObject.Find("Canvas").GetComponent<Black_UI>().Start_Perform();
+    }
+
+    [Header("需要在活动中被激活的墙")]
+    public GameObject Active_Wall;
+
+    public void Set_Road_Active()
+    {
+        //对于Tutorial关卡中的Road3-1实行激活操作
+        Active_Wall.SetActive(true);
+    }
+
+
 }
