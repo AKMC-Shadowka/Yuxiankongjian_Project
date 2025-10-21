@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class Level_Tutorial : Level_Controller
+public class Level_2_Controller : Level_Controller
 {
     public GameObject Current_Character;
 
@@ -38,8 +38,8 @@ public class Level_Tutorial : Level_Controller
         GameObject.Find("Canvas").GetComponent<Black_UI>().Start_Perform();
 
         //对于Level_Tutorial而言，需要把场景切换成Level_1，然后Global_Controller需要把自己的Current_Level_Num设置为1，代表到达了下一个关卡
-        StartCoroutine(Enter_Level_1());
-        
+        //StartCoroutine(Enter_Level_1());
+
     }
 
 
@@ -65,19 +65,4 @@ public class Level_Tutorial : Level_Controller
 
         SceneManager.UnloadScene("Level_Tutorial");
     }
-
-
-
-    [Header("需要在活动中被激活的墙")]
-    public GameObject Active_Wall;
-
-
-
-    public void Set_Road_Active()
-    {
-        //对于Tutorial关卡中的Road3-1实行激活操作
-        Active_Wall.SetActive(true);
-    }
-
-
 }

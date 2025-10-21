@@ -36,8 +36,36 @@ public class Level_1_Controller : Level_Controller
     public override void End_Event()
     {
 
-        Debug.Log("Enter Level Controller 1 End Event");
+        //Debug.Log("Enter Level Tutorial End Event");
         GameObject.Find("Canvas").GetComponent<Black_UI>().Start_Perform();
+
+        //对于Level_Tutorial而言，需要把场景切换成Level_1，然后Global_Controller需要把自己的Current_Level_Num设置为1，代表到达了下一个关卡
+        StartCoroutine(Enter_Level_2());
+
+    }
+
+
+    private IEnumerator Enter_Level_2()
+    {
+
+        //配合黑幕演出，最黑的时候切换场景
+        yield return new WaitForSeconds(2.5f);
+
+
+        AsyncOperation AO = SceneManager.LoadSceneAsync("Level_2", LoadSceneMode.Additive);
+
+        GameObject.Find("Global").GetComponent<Global_Controller>().Current_Level_Num = 2;
+
+        GameObject.Find("Canvas").GetComponent<UI_Controller>().UI_Refresh();
+
+        while (!AO.isDone)
+        {
+            yield return null;
+        }
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_2"));
+
+        SceneManager.UnloadScene("Level_1");
     }
 
 }
