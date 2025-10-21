@@ -21,6 +21,10 @@ public class Exit_Controller : MonoBehaviour
             case 1:
                 Exit_Level_1();
                 break;
+            case -1:
+                //进入教学关卡的结果
+                Exit_Tutorial();
+                break;
 
         }
 
@@ -37,6 +41,16 @@ public class Exit_Controller : MonoBehaviour
         UI_Controller_Component.UI_Refresh();
 
         StartCoroutine(Back_To_Main_Menu("Level_1"));
+    }
+
+    public void Exit_Tutorial()
+    {
+        //将关卡序号设置为0
+        Global_Controller_Component.Current_Level_Num = 0;
+        //UI刷新
+        UI_Controller_Component.UI_Refresh();
+
+        StartCoroutine(Back_To_Main_Menu("Level_Tutorial"));
     }
 
     public IEnumerator Back_To_Main_Menu(string Level_Name)

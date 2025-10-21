@@ -14,4 +14,10 @@ public class Level_Controller : MonoBehaviour
         return;
     }
 
+    public virtual void End_Event()
+    {
+
+    }
+
+
 }
