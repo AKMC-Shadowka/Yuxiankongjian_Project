@@ -61,19 +61,20 @@ public class River_Controller : MonoBehaviour
         float Upper_Y = gameObject.transform.position.y + Current_Trigger_Collider.offset.y + Current_Trigger_Collider.size.y * 0.5f;
 
         float Lower_Y = Current_Bridge.transform.position.y;
-
         
-
         float New_Y_Size = Upper_Y - Lower_Y;
 
-        Debug.Log("New=" + New_Y_Size);
+        Debug.Log("Upper_Y=" + gameObject.transform.position.y + " + " + Current_Trigger_Collider.offset.y + " + " + Current_Trigger_Collider.size.y + " *0.5f(" + Current_Trigger_Collider.size.y * 0.5f + ") = " + Upper_Y
+            + "\n Lower_Y= " + Lower_Y +
+            "\nNew_Y_Size=" + New_Y_Size);
 
-        Current_Trigger_Collider.offset = new Vector2(Current_Trigger_Collider.offset.x, (Upper_Y + Lower_Y) / 2f);
+
+        Current_Trigger_Collider.offset = new Vector2(Current_Trigger_Collider.offset.x, (Upper_Y + Lower_Y) / 2f- gameObject.transform.position.y);
 
         Current_Trigger_Collider.size = new Vector2(Current_Trigger_Collider.size.x, New_Y_Size);
 
 
-        Current_Box_Collider.offset = new Vector2(Current_Trigger_Collider.offset.x, (Upper_Y + Lower_Y) / 2f);
+        Current_Box_Collider.offset = new Vector2(Current_Trigger_Collider.offset.x, (Upper_Y + Lower_Y) / 2f- gameObject.transform.position.y);
 
         Current_Box_Collider.size = new Vector2(Current_Trigger_Collider.size.x, New_Y_Size);
 

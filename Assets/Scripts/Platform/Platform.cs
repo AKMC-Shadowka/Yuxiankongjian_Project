@@ -67,15 +67,17 @@ public class Platform : MonoBehaviour
 
     public void Updown_Detect()
     {
+
+        Rigidbody2D rb1 = gameObject.GetComponent<Rigidbody2D>();
         //如果没有权限，或者正在上下，那就什么都不做
-        if(Updown_Permission==false||Is_Moving==true)
+        if (Updown_Permission==false||Is_Moving==true)
         {
             return;
         }
 
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if(Current_Platform_Num==Platform_Num-1)
+            if(Current_Platform_Num>=Platform_Num-1)
             {
                 return;
             }
@@ -84,7 +86,9 @@ public class Platform : MonoBehaviour
 
             Is_Moving = true;
 
-            Current_Height = Standard_Height[Current_Platform_Num];
+            
+
+            Current_Height = rb1.position.y;
             Goal_Height = Standard_Height[Current_Platform_Num + 1];
             Current_Platform_Num += 1;
 
@@ -96,7 +100,7 @@ public class Platform : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if(Current_Platform_Num==0)
+            if(Current_Platform_Num<=0)
             {
                 return;
             }
@@ -104,7 +108,7 @@ public class Platform : MonoBehaviour
             //进行下降操作
             Is_Moving = true;
 
-            Current_Height = Standard_Height[Current_Platform_Num];
+            Current_Height = rb1.position.y;
             Goal_Height = Standard_Height[Current_Platform_Num -1];
 
             Current_Platform_Num -= 1;
@@ -145,16 +149,14 @@ public class Platform : MonoBehaviour
 
 
         Rigidbody2D rb1 = gameObject.GetComponent<Rigidbody2D>();
-        Rigidbody2D rb2 = Current_Player.GetComponent<Rigidbody2D>();
-
-
-
-
         rb1.position = new Vector2(rb1.position.x, rb1.position.y + (Height_2 - Height_1));
-        rb2.position = new Vector2(rb2.position.x, rb2.position.y + (Height_2 - Height_1));
 
 
-
+        if (Updown_Permission==true)
+        {
+            Rigidbody2D rb2 = Current_Player.GetComponent<Rigidbody2D>();
+            rb2.position = new Vector2(rb2.position.x, rb2.position.y + (Height_2 - Height_1));
+        }
 
     }
 

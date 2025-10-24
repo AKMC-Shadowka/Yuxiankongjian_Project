@@ -14,6 +14,8 @@ public class Death_Controller : MonoBehaviour
 
         U_C.Set_Death_Show(false);
 
+        U_C.Blood_Show = false;//把血渍去掉
+        U_C.UI_Refresh();
         //UI的事情做完了，现在要重新复位玩家了
 
         GameObject Character_Object = GameObject.Find("Character");

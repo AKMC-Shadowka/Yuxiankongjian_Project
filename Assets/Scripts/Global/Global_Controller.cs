@@ -9,15 +9,10 @@ public class Global_Controller : MonoBehaviour
     public int Current_Level_Num;
 
 
-    // Start is called before the first frame update
-    void Start()
+    //输出结局的序号
+    public int Calculate_End()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //经过一通计算
+        return 0;
     }
 }

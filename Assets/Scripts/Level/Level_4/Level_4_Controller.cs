@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class Level_2_Controller : Level_Controller
+public class Level_4_Controller : Level_Controller
 {
     public GameObject Current_Character;
 
@@ -25,7 +25,7 @@ public class Level_2_Controller : Level_Controller
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("Main_Menu"));
 
-        SceneManager.UnloadScene("Level_2");
+        SceneManager.UnloadScene("Level_4");
     }
 
 
@@ -38,21 +38,21 @@ public class Level_2_Controller : Level_Controller
         GameObject.Find("Canvas").GetComponent<Black_UI>().Start_Perform();
 
         //对于Level_Tutorial而言，需要把场景切换成Level_1，然后Global_Controller需要把自己的Current_Level_Num设置为1，代表到达了下一个关卡
-        StartCoroutine(Enter_Level_3());
+        StartCoroutine(Enter_Level_5());
 
     }
 
 
-    private IEnumerator Enter_Level_3()
+    private IEnumerator Enter_Level_5()
     {
 
         //配合黑幕演出，最黑的时候切换场景
         yield return new WaitForSeconds(2.5f);
 
 
-        AsyncOperation AO = SceneManager.LoadSceneAsync("Level_3", LoadSceneMode.Additive);
+        AsyncOperation AO = SceneManager.LoadSceneAsync("Level_5", LoadSceneMode.Additive);
 
-        GameObject.Find("Global").GetComponent<Global_Controller>().Current_Level_Num = 3;
+        GameObject.Find("Global").GetComponent<Global_Controller>().Current_Level_Num = 5;
 
         GameObject.Find("Canvas").GetComponent<UI_Controller>().UI_Refresh();
 
@@ -61,8 +61,8 @@ public class Level_2_Controller : Level_Controller
             yield return null;
         }
 
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_3"));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_5"));
 
-        SceneManager.UnloadScene("Level_2");
+        SceneManager.UnloadScene("Level_4");
     }
 }

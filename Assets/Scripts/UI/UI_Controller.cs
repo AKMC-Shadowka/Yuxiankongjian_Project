@@ -12,7 +12,9 @@ public class UI_Controller : MonoBehaviour
     public bool Death_Show;
     public bool Bag_Show; // 统一管理背包显示状态
 
-    
+    public bool Blood_Show;
+
+    public bool End_Show;//管理结束走马灯结局的脚本是否播放
 
     public GameObject Exit_Button;
     public GameObject Main_Menu_Button;
@@ -20,6 +22,10 @@ public class UI_Controller : MonoBehaviour
     public GameObject Task_Terminal;
     public GameObject Bag_Button;
     public GameObject Death_UI;
+
+    public GameObject Blood_UI;
+    public GameObject End_UI;
+
 
     // === 背包控制器引用 ===
     [Header("背包控制器")]
@@ -47,11 +53,19 @@ public class UI_Controller : MonoBehaviour
 
         //背包UI显示
         Bag_UI_Refresh();
+
+        //血丝UI显示
+        Blood_UI_Show();
+
+        //结局走马灯UI显示
+        End_UI_Show();
     }
 
     private void Exit_Button_Refresh()
     {
-        if(Global_Controller_Component.Current_Level_Num==0)
+        if(Global_Controller_Component.Current_Level_Num==0
+            ||
+            Global_Controller_Component.Current_Level_Num == 6)
         {
             Exit_Button.SetActive(false);
         }
@@ -69,6 +83,8 @@ public class UI_Controller : MonoBehaviour
             Task_Terminal_Show==true
             ||
             Bag_Show // 使用统一的背包显示状态
+            ||
+            Global_Controller_Component.Current_Level_Num == 6
             )
         {
             Task_Button.SetActive(false);
@@ -105,7 +121,11 @@ public class UI_Controller : MonoBehaviour
     private void Bag_Button_Refresh()
     {
         // 在关卡0或者背包已经打开时隐藏背包按钮
-        if (Global_Controller_Component.Current_Level_Num == 0 || Bag_Show)
+        if (Global_Controller_Component.Current_Level_Num == 0
+            ||
+            Bag_Show
+            ||
+            Global_Controller_Component.Current_Level_Num == 6)
         {
             Bag_Button.SetActive(false);
         }
@@ -171,6 +191,17 @@ public class UI_Controller : MonoBehaviour
     {
         Set_Bag_Show(false);
     }
+
+    public void Blood_UI_Show()
+    {
+        Blood_UI.SetActive(Blood_Show);
+    }
+
+    public void End_UI_Show()
+    {
+        End_UI.SetActive(End_Show);
+    }
+
 
     // Start is called before the first frame update
     void Start()

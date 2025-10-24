@@ -42,6 +42,12 @@ public class Poison_Controller : MonoBehaviour
             Poison_On = true;
             //开始进入死亡倒计时
         }
+
+        //开始进行血液UI显示
+        GameObject.Find("Canvas").GetComponent<UI_Controller>().Blood_Show = true;
+        GameObject.Find("Canvas").GetComponent<UI_Controller>().UI_Refresh();
+
+
     }
 
     public void Poison_Countdown()
@@ -64,6 +70,10 @@ public class Poison_Controller : MonoBehaviour
     public void OnTriggerExit2D(Collider2D other)
     {
         Poison_On = false;
+
+        //结束进行血液UI显示
+        GameObject.Find("Canvas").GetComponent<UI_Controller>().Blood_Show = false;
+        GameObject.Find("Canvas").GetComponent<UI_Controller>().UI_Refresh();
     }
 
     
