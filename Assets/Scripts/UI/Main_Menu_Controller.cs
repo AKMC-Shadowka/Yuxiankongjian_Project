@@ -18,13 +18,20 @@ public class Main_Menu_Controller : MonoBehaviour
 
         //此处应该先进入教学关卡，所以应该把Current_Level_Num=-1
         Global_Controller_Component.Current_Level_Num = -1;
-        UI_Controller_Component.UI_Refresh();
+        
 
+
+        gameObject.GetComponent<Black_UI>().Start_Perform();
         StartCoroutine(LoadLevel());
     }
 
     private IEnumerator LoadLevel()
     {
+
+        //将1黑幕表演的时间让出来
+        yield return new WaitForSeconds(2.5f);
+
+        UI_Controller_Component.UI_Refresh();
         // 异步加载新场景
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Level_Tutorial", LoadSceneMode.Additive);
 

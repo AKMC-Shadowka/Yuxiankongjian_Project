@@ -15,6 +15,8 @@ public class UI_Controller : MonoBehaviour
     public bool Blood_Show;
 
     public bool End_Show;//管理结束走马灯结局的脚本是否播放
+    public bool Dialog_Show;
+
 
     public GameObject Exit_Button;
     public GameObject Main_Menu_Button;
@@ -25,6 +27,9 @@ public class UI_Controller : MonoBehaviour
 
     public GameObject Blood_UI;
     public GameObject End_UI;
+    public GameObject Dialog_UI;
+
+
 
 
     // === 背包控制器引用 ===
@@ -59,6 +64,9 @@ public class UI_Controller : MonoBehaviour
 
         //结局走马灯UI显示
         End_UI_Show();
+
+        //对话UI显示
+        Dialog_UI_Show();
     }
 
     private void Exit_Button_Refresh()
@@ -200,6 +208,11 @@ public class UI_Controller : MonoBehaviour
     public void End_UI_Show()
     {
         End_UI.SetActive(End_Show);
+    }
+
+    public void Dialog_UI_Show()
+    {
+        Dialog_UI.SetActive(Dialog_Show);
     }
 
 
