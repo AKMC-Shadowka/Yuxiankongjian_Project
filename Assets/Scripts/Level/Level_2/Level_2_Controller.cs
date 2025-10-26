@@ -84,6 +84,8 @@ public class Level_2_Controller : Level_Controller
 
     public override void End_Dialog()
     {
+
+        GameObject.Find("Character").GetComponent<Player>().Effective_Move = true;
         if(Start_Chasing==false)
         {
 

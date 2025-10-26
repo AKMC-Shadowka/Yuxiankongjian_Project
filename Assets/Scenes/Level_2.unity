@@ -4215,7 +4215,7 @@ MonoBehaviour:
   Current_Death_Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 9064279516972715184, guid: e2b7ec5f83b9e3f4a945a71b5b23a2f8, type: 3}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: Death_Event
         m_Mode: 1
@@ -10210,10 +10210,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2613263746180319148, guid: 6d4d882c08fa78342af00eb52b636632, type: 3}
-      propertyPath: Current_Dialog
-      value: 
-      objectReference: {fileID: 11400000, guid: a168dbd970fb0b947bc5fa00acb43fd8, type: 2}
     - target: {fileID: 3278179176307061788, guid: 6d4d882c08fa78342af00eb52b636632, type: 3}
       propertyPath: m_Name
       value: Dialog_Zone
@@ -10361,7 +10357,7 @@ MonoBehaviour:
   Current_Death_Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 9064279516972715184, guid: e2b7ec5f83b9e3f4a945a71b5b23a2f8, type: 3}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: Death_Event
         m_Mode: 1

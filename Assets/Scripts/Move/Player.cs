@@ -142,6 +142,12 @@ public class Player : MonoBehaviour
 
     public void Shift_Mode(Rigidbody2D rb)
     {
+
+        if(On_Ground==false)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (!Gravity_On)

@@ -109,6 +109,8 @@ GameObject:
   - component: {fileID: 2055980679031666065}
   - component: {fileID: 6649786689074940226}
   - component: {fileID: 2613263746180319148}
+  - component: {fileID: 8145283529922240703}
+  - component: {fileID: 517910153661667108}
   m_Layer: 0
   m_Name: Dialog_Zone
   m_TagString: Untagged
@@ -236,9 +238,49 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3278179176307061788}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3004b0182035934c893f8c10191d9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Current_Dialog: {fileID: 11400000, guid: 9c9a9f3f381773741b4209a4ace7d760, type: 2}
+  Current_Dialog: {fileID: 11400000, guid: a168dbd970fb0b947bc5fa00acb43fd8, type: 2}
+--- !u!114 &8145283529922240703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278179176307061788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3b2f192954b28408e933b309314c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Current_Activity_Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 517910153661667108}
+        m_TargetAssemblyTypeName: Activity_Dialog, Assembly-CSharp
+        m_MethodName: Start_Dialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &517910153661667108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278179176307061788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65bfea5217f3df4696cc37bce534dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Current_Dialog: {fileID: 11400000, guid: a168dbd970fb0b947bc5fa00acb43fd8, type: 2}
