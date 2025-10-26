@@ -90,6 +90,8 @@ public class UI_Controller : MonoBehaviour
 
     private void Task_Button_Refresh()
     {
+        //这个按钮被弃用了
+        return;
         if (
             Global_Controller_Component.Current_Level_Num == 0
             ||

@@ -71,12 +71,14 @@ public class Level_Tutorial : Level_Controller
     [Header("需要在活动中被激活的墙")]
     public GameObject Active_Wall;
 
+    public GameObject Disactive_Wall;
 
 
     public void Set_Road_Active()
     {
         //对于Tutorial关卡中的Road3-1实行激活操作
         Active_Wall.SetActive(true);
+        Disactive_Wall.SetActive(false);
     }
 
 

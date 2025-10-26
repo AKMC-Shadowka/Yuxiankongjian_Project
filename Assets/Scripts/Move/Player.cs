@@ -119,6 +119,9 @@ public class Player : MonoBehaviour
         {
             New_X += Move_Speed;
         }
+
+        New_X *= Time.deltaTime * 60f*2f;
+        New_Y *= Time.deltaTime * 60f*2f;//速度太慢了，在这里*2吧
         New_Pos = new Vector2(rb.position.x + New_X, rb.position.y + New_Y);
 
         rb.position=new Vector2(New_Pos.x,New_Pos.y);
@@ -162,7 +165,7 @@ public class Player : MonoBehaviour
     void CheckGrounded()
     {
         // 这里实现的地面检测逻辑
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1f);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 2f);
         if (hits.Length > 0)
         {
             foreach (RaycastHit2D hit in hits)

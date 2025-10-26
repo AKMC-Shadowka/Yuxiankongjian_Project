@@ -17,7 +17,17 @@ public class Cliff : MonoBehaviour
     public void Start()
     {
         Current_Collider =  gameObject.GetComponent<BoxCollider2D>();
+
+        StartCoroutine(Set_Player_Component());
     }
+
+    public IEnumerator Set_Player_Component()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        Player_Component = GameObject.Find("Character").GetComponent<Player>();
+    }
+
     public void Update()
     {
         Check_State();

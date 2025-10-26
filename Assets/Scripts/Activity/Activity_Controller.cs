@@ -24,5 +24,13 @@ public class Activity_Controller : MonoBehaviour
         //触发指定活动
 
         Current_Activity_Event.Invoke();
+
+        StartCoroutine(Destroy_Self());
+    }
+
+    public IEnumerator Destroy_Self()
+    {
+        yield return new WaitForSeconds(5.1f);
+        gameObject.SetActive(false);
     }
 }

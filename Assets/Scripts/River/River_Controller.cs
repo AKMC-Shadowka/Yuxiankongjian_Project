@@ -33,6 +33,15 @@ public class River_Controller : MonoBehaviour
 
         Current_Box_Collider = GetComponents<BoxCollider2D>()[0];
 
+        StartCoroutine(Set_Player_Component());
+
+    }
+
+    public IEnumerator Set_Player_Component()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        Current_Player= GameObject.Find("Character").GetComponent<Player>();
     }
 
     public void Update()

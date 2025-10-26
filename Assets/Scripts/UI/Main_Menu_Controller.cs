@@ -55,5 +55,16 @@ public class Main_Menu_Controller : MonoBehaviour
         SceneManager.UnloadSceneAsync("Main_Menu");
     }
 
+    public void Quit_Button_Click()
+    {
+
+        Application.Quit();
+
+        // ÔÚ±à¼­Æ÷ÖÐÍ£Ö¹²¥·Å
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+
+    }
 
 }
