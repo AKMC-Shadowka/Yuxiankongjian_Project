@@ -17,6 +17,7 @@ public class UI_Controller : MonoBehaviour
     public bool End_Show;//管理结束走马灯结局的脚本是否播放
     public bool Dialog_Show;
 
+    public bool Chase_Show;//是否显示追逐的渐变黑屏特效
 
     public GameObject Exit_Button;
     public GameObject Main_Menu_Button;
@@ -29,6 +30,7 @@ public class UI_Controller : MonoBehaviour
     public GameObject End_UI;
     public GameObject Dialog_UI;
 
+    public GameObject Chase_UI;
 
 
 
@@ -67,6 +69,9 @@ public class UI_Controller : MonoBehaviour
 
         //对话UI显示
         Dialog_UI_Show();
+
+        //追逐UI显示
+        Chase_UI_Show();
     }
 
     private void Exit_Button_Refresh()
@@ -213,6 +218,11 @@ public class UI_Controller : MonoBehaviour
     public void Dialog_UI_Show()
     {
         Dialog_UI.SetActive(Dialog_Show);
+    }
+
+    public void Chase_UI_Show()
+    {
+        Chase_UI.SetActive(Chase_Show);
     }
 
 

@@ -12,8 +12,18 @@ public class Exit_Controller : MonoBehaviour
 
     public UI_Controller UI_Controller_Component;
 
+
+    public void Current_UI_Refresh()
+    {
+        UI_Controller_Component.Chase_Show = false;
+        UI_Controller_Component.Blood_Show = false;
+        UI_Controller_Component.UI_Refresh();
+    }
+
     public void Exit_Button_Click()
     {
+
+        Current_UI_Refresh();
         switch (Global_Controller_Component.Current_Level_Num)
         {
             case 0:

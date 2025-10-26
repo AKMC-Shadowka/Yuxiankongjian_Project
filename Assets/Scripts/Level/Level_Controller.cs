@@ -19,5 +19,10 @@ public class Level_Controller : MonoBehaviour
 
     }
 
+    public virtual void End_Dialog()
+    {
+
+    }
+
 
 }

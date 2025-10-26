@@ -77,7 +77,7 @@ public class Dialog_Player : MonoBehaviour
         UI_C.Dialog_Show = true;
         UI_C.UI_Refresh();
 
-        GameObject Dialog_Background = gameObject.transform.GetChild(10).gameObject;
+        GameObject Dialog_Background = GameObject.Find("Dialog_Frontend");
         GameObject Dialog_Text = Dialog_Background.transform.GetChild(3).gameObject;
         Set_Dialog_Player_Attribute(d, Dialog_Background, Dialog_Text);
 
@@ -178,6 +178,9 @@ public class Dialog_Player : MonoBehaviour
        UI_Controller UI_C= gameObject.GetComponent<UI_Controller>();
         UI_C.Dialog_Show = false;
         UI_C.UI_Refresh();
+
+        //有一部分对话结束的时候是需要直接开始另一项活动的，所以就在这里写一下了
+        GameObject.Find("Level_Controller").GetComponent<Level_Controller>().End_Dialog();
 
     }
 

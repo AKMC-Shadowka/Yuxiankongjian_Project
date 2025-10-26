@@ -16,6 +16,13 @@ public class Main_Menu_Controller : MonoBehaviour
     public void Start_Button_Click()
     {
 
+        if(Global_Controller_Component.Current_Level_Num == -1)
+        {
+            //防止2次连点造成Bug
+            return;
+        }
+
+
         //此处应该先进入教学关卡，所以应该把Current_Level_Num=-1
         Global_Controller_Component.Current_Level_Num = -1;
         

@@ -8,6 +8,17 @@ public class Level_2_Controller : Level_Controller
 {
     public GameObject Current_Character;
 
+
+    private bool Start_Chasing;
+
+    public Chase_Controller Current_Chase_Controller;
+
+    public void Start()
+    {
+        Start_Chasing = false;
+    }
+
+
     //关于如何退出这个界面返回Main_Menu
     public void Exit_Button_Click()
     {
@@ -36,6 +47,11 @@ public class Level_2_Controller : Level_Controller
 
         //Debug.Log("Enter Level Tutorial End Event");
         GameObject.Find("Canvas").GetComponent<Black_UI>().Start_Perform();
+        UI_Controller UI_C=GameObject.Find("Canvas").GetComponent<UI_Controller>();
+        UI_C.Chase_Show = false;
+        UI_C.Blood_Show = false;
+        UI_C.UI_Refresh();
+
 
         //对于Level_Tutorial而言，需要把场景切换成Level_1，然后Global_Controller需要把自己的Current_Level_Num设置为1，代表到达了下一个关卡
         StartCoroutine(Enter_Level_3());
@@ -65,4 +81,15 @@ public class Level_2_Controller : Level_Controller
 
         SceneManager.UnloadScene("Level_2");
     }
+
+    public override void End_Dialog()
+    {
+        if(Start_Chasing==false)
+        {
+
+            Current_Chase_Controller.Start_Perform();
+            return;
+        }
+    }
+
 }

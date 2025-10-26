@@ -1571,6 +1571,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266784611}
   m_CullTransparentMesh: 1
+--- !u!1 &290676786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 290676787}
+  - component: {fileID: 290676789}
+  - component: {fileID: 290676788}
+  m_Layer: 5
+  m_Name: Chase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &290676787
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290676786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 803028679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &290676788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290676786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: -876546973899608171, guid: 460fcf8f1429b4e4ca903fac9b8f830d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &290676789
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290676786}
+  m_CullTransparentMesh: 1
 --- !u!1 &298945002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2667,6 +2742,7 @@ RectTransform:
   m_Children:
   - {fileID: 1142710516}
   - {fileID: 570168148}
+  - {fileID: 290676787}
   - {fileID: 1288092287}
   - {fileID: 244034509}
   - {fileID: 1983117695}
@@ -2702,6 +2778,7 @@ MonoBehaviour:
   Blood_Show: 0
   End_Show: 0
   Dialog_Show: 0
+  Chase_Show: 0
   Exit_Button: {fileID: 244034508}
   Main_Menu_Button: {fileID: 608824603}
   Task_Button: {fileID: 1983117694}
@@ -2711,6 +2788,7 @@ MonoBehaviour:
   Blood_UI: {fileID: 1288092286}
   End_UI: {fileID: 1142710515}
   Dialog_UI: {fileID: 136495832}
+  Chase_UI: {fileID: 290676786}
   bagController: {fileID: 1868999629}
 --- !u!114 &803028681
 MonoBehaviour:
@@ -3010,7 +3088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7256393a4139f9944849d037a2f7c80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Current_Level_Num: 5
+  Current_Level_Num: 0
 --- !u!1 &934290213
 GameObject:
   m_ObjectHideFlags: 0

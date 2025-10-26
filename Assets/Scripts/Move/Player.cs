@@ -217,6 +217,12 @@ public class Player : MonoBehaviour
 
         Effective_Move = false;
 
+        UI_Controller UI_C = GameObject.Find("Canvas").GetComponent<UI_Controller>();
+        UI_C.Blood_Show = false;
+        UI_C.Chase_Show = false;
+        UI_C.UI_Refresh();
+
+
         GameObject.Find("Canvas").GetComponent<UI_Controller>().Set_Death_Show(true);
     }
 
