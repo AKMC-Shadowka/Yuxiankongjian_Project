@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
     public void Shift_Mode(Rigidbody2D rb)
     {
 
-        if(On_Ground==false)
+        if(On_Ground==false&&Gravity_On==true)
         {
             return;
         }

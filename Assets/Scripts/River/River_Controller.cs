@@ -56,6 +56,11 @@ public class River_Controller : MonoBehaviour
             Current_Box_Collider.offset = Classic_Offset;
 
             Current_Box_Collider.size = Classic_Size;
+
+            var Shape = Current_Particle_System.shape;
+            Shape.position = new Vector3(Classic_Offset.x, Classic_Offset.y, Shape.position.z);
+
+            Shape.scale = new Vector3(Classic_Size.x, Classic_Size.y, Shape.scale.z);
             return;
         }
         Reset_Collider_Position();
@@ -86,6 +91,12 @@ public class River_Controller : MonoBehaviour
         Current_Box_Collider.offset = new Vector2(Current_Trigger_Collider.offset.x, (Upper_Y + Lower_Y) / 2f- gameObject.transform.position.y);
 
         Current_Box_Collider.size = new Vector2(Current_Trigger_Collider.size.x, New_Y_Size);
+
+
+        var Shape = Current_Particle_System.shape;
+        Shape.position = new Vector3(Current_Trigger_Collider.offset.x, (Upper_Y + Lower_Y) / 2f - gameObject.transform.position.y, Current_Particle_System.shape.position.z);
+
+        Shape.scale = new Vector3(Current_Trigger_Collider.size.x, New_Y_Size, Current_Particle_System.shape.scale.z);
 
     }
 

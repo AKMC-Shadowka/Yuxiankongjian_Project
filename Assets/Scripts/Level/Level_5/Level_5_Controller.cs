@@ -105,4 +105,10 @@ public class Level_5_Controller : Level_Controller
         GameObject.Find("Canvas").GetComponent<End_Perform>().Start_Performance();
     }
 
+    public override void End_Dialog()
+    {
+
+        GameObject.Find("Character").GetComponent<Player>().Effective_Move = true;
+    }
+
 }
