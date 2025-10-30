@@ -66,7 +66,12 @@ public class Dialog_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //如果遇到死亡事件，那么就直接Finish_Dialog
+        if(gameObject.transform.GetChild(8).gameObject.activeInHierarchy)
+        {
+            Dialog_Finish();
+            return;
+        }
     }
 
     public void Dialog_Initialize(Dialog d)
@@ -113,6 +118,9 @@ public class Dialog_Player : MonoBehaviour
 
     public void Dialog_Refresh()
     {
+        //这下每点一下也可以同步到Level_Controller中了
+        GameObject.Find("Level_Controller").GetComponent<Level_Controller>().Dialog_Button_Click(Current_Dialog_Index);
+
         //这个函数负责每点击一下的刷新工作
         Current_Text_Refresh_Index = 0;
         Dialog_Human_Image.sprite = Current_Dialog.Dialog_Ele[Current_Dialog_Index].Human;

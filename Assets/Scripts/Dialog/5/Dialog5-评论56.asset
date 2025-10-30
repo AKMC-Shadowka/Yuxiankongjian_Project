@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06138dd36b163548b97e378f414deca, type: 3}
+  m_Name: "Dialog5-\u8BC4\u8BBA56"
+  m_EditorClassIdentifier: 
+  Dialog_Ele:
+  - Name: "\u6797\u6653\u6708"
+    Img: {fileID: 0}
+    Human: {fileID: 21300000, guid: 025d28407e1ccb14e8723882b6e2afc2, type: 3}
+    Content: "\u4ED6\u9EBB\u6728\u4E86\u2026\u2026\u4ED6\u662F\u8FD9\u4E2A\u5403\u4EBA\u89C4\u77E9\u7684\u4E00\u90E8\u5206\uFF0C\u65E2\u662F\u53D7\u5BB3\u8005\uFF0C\u4E5F\u662F\u52A0\u5BB3\u8005\u2026\u2026\u6708\u7075\u7ADF\u906D\u9047\u4E86\u6BD2\u624B\uFF01"
+    Sound: {fileID: 0}
+  - Name: "\u6797\u6653\u6708"
+    Img: {fileID: 0}
+    Human: {fileID: 21300000, guid: 025d28407e1ccb14e8723882b6e2afc2, type: 3}
+    Content: "\u90A3\u5C01\u7EDD\u7B14\u4FE1\uFF0C\u662F\u51FA\u81EA\u6708\u7075\u4E4B\u624B\uFF01"
+    Sound: {fileID: 0}

@@ -24,6 +24,7 @@ public class Bridge : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+
         Debug.Log("User Enter the Bridge");
         River.enabled = false;
     }

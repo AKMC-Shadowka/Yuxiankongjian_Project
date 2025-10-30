@@ -60,6 +60,21 @@ public class End_Perform : MonoBehaviour
         //应该寻找准备表演的下属，下面应该询问Global_Controller应该播放哪个结局
         int End_Num = Current_Global_Controller.Calculate_End();
 
+        //这个时候不管如何应该对下面子物体的Active状态的刷新进行一下刷新
+        for(int i=0;i<3;i++)
+        {
+            if(i==End_Num)
+            {
+                End_Perform_UI.transform.GetChild(i).gameObject.SetActive(true);
+                gameObject.GetComponent<Audio_Player>().Play(i);
+                continue;
+            }
+            else
+            {
+                End_Perform_UI.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+
         GameObject Perform_Object = End_Perform_UI.transform.GetChild(End_Num).gameObject;
 
         //然后去调整Object的Y值

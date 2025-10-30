@@ -42,7 +42,7 @@ public void OnTriggerEnter2D(Collider2D other)
             return;
         }
 
-        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        //gameObject.transform.GetChild(0).gameObject.SetActive(true);
 
     }
 

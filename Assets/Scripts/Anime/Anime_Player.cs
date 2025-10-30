@@ -19,7 +19,7 @@ public class Anime_Player : MonoBehaviour
     public void Update()
     {
 
-        Debug.Log("Current_Animator= " + Current_Anime_Object.name + "  Anime _ON= " + Current_Anime_Object.GetComponent<Animator>().enabled);
+        //Debug.Log("Current_Animator= " + Current_Anime_Object.name + "  Anime _ON= " + Current_Anime_Object.GetComponent<Animator>().enabled);
         Anime_Refresh();
 
     }

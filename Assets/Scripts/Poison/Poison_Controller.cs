@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+
 
 public class Poison_Controller : MonoBehaviour
 {
@@ -53,8 +55,8 @@ public class Poison_Controller : MonoBehaviour
     public void Poison_Countdown()
     {
         Current_Time = Current_Time + Time.deltaTime;
-
-        if(Current_Time>=Poison_Time)
+         GameObject.Find("Blood").GetComponent<Image>().material.SetFloat("_Alpha_Scale", Current_Time / Poison_Time);
+        if (Current_Time>=Poison_Time)
         {
             //’‚æÕÀ¿¡À
 

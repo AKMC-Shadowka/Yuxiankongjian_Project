@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     public bool Effective_Move;//判断当前移动是否有效
 
+
+
     public bool Effective_W;
     public bool Effective_A;
     public bool Effective_S;
@@ -35,6 +37,10 @@ public class Player : MonoBehaviour
 
     public Vector2 Saved_Position;
 
+    public bool Dead;
+
+    public bool Gravity_Lock;//是否处于只能以重力状态行走的区域
+
     void Start()
     {
 
@@ -56,10 +62,58 @@ public class Player : MonoBehaviour
 
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+    public float Current_Time=0f;
+
+    public void Calculate_Effective_Move()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        GameObject death = canvas.transform.GetChild(8).gameObject;
+        //Debug.Log("Death.name=" + death.name);
+        GameObject dialog = canvas.transform.GetChild(12).gameObject;
+        //Debug.Log("dialog.name=" + dialog.name);
+        GameObject choice = canvas.transform.GetChild(13).gameObject;
+        if (death.activeInHierarchy)
+        {
+            Effective_Move = false;
+            return;
+        }
+        if(dialog.activeInHierarchy)
+        {
+            Effective_Move = false;
+            return;
+        }
+
+        if(canvas.GetComponent<Black_UI>().Perform_On==true)
+        {
+            Effective_Move = false;
+            return;
+        }
+
+        if(choice.activeInHierarchy)
+        {
+            Effective_Move = false;
+            return;
+        }
+
+        Effective_Move = true;
+        return;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        Calculate_Effective_Move();
+        //Debug.Log("Current_Time="+Current_Time+"Effective_Move=" + Effective_Move);
+
+        // 强制编辑器刷新
+#if UNITY_EDITOR
+    UnityEditor.EditorUtility.SetDirty(this);
+#endif
+
+        Current_Time += Time.deltaTime;
+        //Debug.Log("Time= " + Current_Time + " s, Effective_Move=" + Effective_Move);
+
+
 
         if(Effective_Move==false)
         {
@@ -143,7 +197,25 @@ public class Player : MonoBehaviour
     public void Shift_Mode(Rigidbody2D rb)
     {
 
+        //此处是剧情需要的判定
+        if (
+            GameObject.Find("Global").GetComponent<Global_Controller>().Current_Level_Num == 2
+            &&
+            GameObject.Find("Level_Controller").GetComponent<Level_2_Controller>().Shift_On == true
+            &&
+            Input.GetKeyDown(KeyCode.F)
+            )
+        {
+            Level_2_Shift();
+        }
+        
+        //剩下的是ShiftMode的功能
         if(On_Ground==false&&Gravity_On==true)
+        {
+            return;
+        }
+
+        if(Gravity_Lock==true&&Gravity_On==true)
         {
             return;
         }
@@ -168,6 +240,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Level_2_Shift()
+    {
+        GameObject.Find("Level_Controller").GetComponent<Level_2_Controller>().Shift_Dialog.Start_Dialog();
+        GameObject.Find("Level_Controller").GetComponent<Level_2_Controller>().Shift_Dialog_Over = true;
+    }
+
     void CheckGrounded()
     {
         // 这里实现的地面检测逻辑
@@ -182,8 +260,13 @@ public class Player : MonoBehaviour
                 {
                     continue;
                 }
-                On_Ground = true;
-                return;
+                if(hit.collider.isTrigger==false)
+                {
+                    On_Ground = true;
+                    return;
+                }
+                
+                
             }
         }
         On_Ground = false;
@@ -223,16 +306,25 @@ public class Player : MonoBehaviour
     public void Death_Event()
     {
         Debug.Log("Player Is Dead");
-
+        //重力也要锁
+        Dead = true;
+        Gravity_On = false;
         Effective_Move = false;
-
+        
         UI_Controller UI_C = GameObject.Find("Canvas").GetComponent<UI_Controller>();
         UI_C.Blood_Show = false;
         UI_C.Chase_Show = false;
         UI_C.UI_Refresh();
 
-
+        
         GameObject.Find("Canvas").GetComponent<UI_Controller>().Set_Death_Show(true);
+
+        
+    }
+
+    public void Set_Dead()
+    {
+        Dead = true;
     }
 
 }

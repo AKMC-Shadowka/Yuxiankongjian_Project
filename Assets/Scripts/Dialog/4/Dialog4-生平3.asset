@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06138dd36b163548b97e378f414deca, type: 3}
+  m_Name: "Dialog4-\u751F\u5E733"
+  m_EditorClassIdentifier: 
+  Dialog_Ele:
+  - Name: "\u6797\u6653\u6708"
+    Img: {fileID: 0}
+    Human: {fileID: 21300000, guid: d7d38dfbf97e3604c9fbd118e652a276, type: 3}
+    Content: "\u4ED6\u4EEC\u5728\u8BF4\u962E\u9752\u6885\u662F\u9E21\u9B3C\uFF1F\u4F46\u662F\xB7\xB7\xB7\u8FD9\u662F\u771F\u7684\u5417\xB7\xB7"
+    Sound: {fileID: 0}

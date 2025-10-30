@@ -15,6 +15,7 @@ public class Fall : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        //GameObject.Find("Character").GetComponent<Player>().Effective_Move = false;
         Current_Death_Event.Invoke();
     }
 

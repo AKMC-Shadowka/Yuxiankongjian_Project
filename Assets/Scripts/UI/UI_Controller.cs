@@ -19,6 +19,10 @@ public class UI_Controller : MonoBehaviour
 
     public bool Chase_Show;//是否显示追逐的渐变黑屏特效
 
+    public bool Curtain_Show;//是否显示黑色演出幕布特效
+
+    public bool Final_Choice_Show;//最终选择是否显示
+
     public GameObject Exit_Button;
     public GameObject Main_Menu_Button;
     public GameObject Task_Button;
@@ -31,8 +35,9 @@ public class UI_Controller : MonoBehaviour
     public GameObject Dialog_UI;
 
     public GameObject Chase_UI;
+    public GameObject Curtain_UI;
 
-
+    public GameObject Final_Choice_UI;
 
     // === 背包控制器引用 ===
     [Header("背包控制器")]
@@ -72,6 +77,12 @@ public class UI_Controller : MonoBehaviour
 
         //追逐UI显示
         Chase_UI_Show();
+
+        //幕布UI显示
+        Curtain_UI_Show();
+
+        //最终选择UI显示
+        Final_Choice_UI_Show();
     }
 
     private void Exit_Button_Refresh()
@@ -100,6 +111,8 @@ public class UI_Controller : MonoBehaviour
             Bag_Show // 使用统一的背包显示状态
             ||
             Global_Controller_Component.Current_Level_Num == 6
+            ||
+            Global_Controller_Component.Current_Level_Num==-2
             )
         {
             Task_Button.SetActive(false);
@@ -135,12 +148,19 @@ public class UI_Controller : MonoBehaviour
     // 背包按钮刷新方法
     private void Bag_Button_Refresh()
     {
+        //这个按钮有问题，暂时弃用了
+        Bag_Button.SetActive(false);
+        return;
+
         // 在关卡0或者背包已经打开时隐藏背包按钮
         if (Global_Controller_Component.Current_Level_Num == 0
             ||
             Bag_Show
             ||
-            Global_Controller_Component.Current_Level_Num == 6)
+            Global_Controller_Component.Current_Level_Num == 6
+             ||
+            Global_Controller_Component.Current_Level_Num == -2
+            )
         {
             Bag_Button.SetActive(false);
         }
@@ -227,6 +247,15 @@ public class UI_Controller : MonoBehaviour
         Chase_UI.SetActive(Chase_Show);
     }
 
+    public void Curtain_UI_Show()
+    {
+        Curtain_UI.SetActive(Curtain_Show);
+    }
+
+    public void Final_Choice_UI_Show()
+    {
+        Final_Choice_UI.SetActive(Final_Choice_Show);
+    }
 
     // Start is called before the first frame update
     void Start()

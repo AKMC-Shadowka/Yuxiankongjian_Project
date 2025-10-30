@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class Level_3_Controller : Level_Controller
 {
@@ -64,4 +66,124 @@ public class Level_3_Controller : Level_Controller
 
         SceneManager.UnloadScene("Level_3");
     }
+
+
+    public override void Dialog_Button_Click(int index)
+    {
+        if(Shawty_Dialog==true&&index==8)
+        {
+            GameObject.Find("Dialog_Frontend").transform.GetChild(0).gameObject.GetComponent<Image>().material = Glitch_Material;
+        }
+        if(Shawty_Dialog==true&&index==10)
+        {
+            GameObject.Find("Dialog_Frontend").transform.GetChild(0).gameObject.GetComponent<Image>().material = null;
+        }
+    }
+
+    public override void End_Dialog()
+    {
+
+        GameObject.Find("Character").GetComponent<Player>().Effective_Move = true;
+
+        if(Shawty_Dialog==true)
+        {
+            Shawty_Dialog = false;
+            Shawty.SetActive(false);
+        }
+
+        if(Poison_Dialog_On==true)
+        {
+            Poison_Dialog_On = false;
+            Destroy_All_Poison_Dialog();
+        }
+
+        //结束第一个镜子对话
+        if(Mirror_Dialog_1==true)
+        {
+            Mirror_Dialog_1 = false;
+            Mirror_Dialog_2 = true;
+            Curtain_Dialog.GetComponent<Activity_Dialog>().Start_Curtain_Dialog();
+            return;
+        }
+
+        //结束第二个镜子对话
+        if(Mirror_Dialog_2==true)
+        {
+            Mirror_Dialog_2 = false;
+            GameObject canvas = GameObject.Find("Canvas");
+
+            canvas.GetComponent<UI_Controller>().Curtain_Show = false;
+            canvas.GetComponent<UI_Controller>().UI_Refresh();
+
+            Normal_Dialog.GetComponent<Activity_Dialog>().Start_Dialog();
+
+            Cliff_1.SetActive(false);
+            Cliff_2.SetActive(false);
+            return;
+        }
+
+
+    }
+
+    public GameObject Hidden_Road;
+    public GameObject Unused_Wall;
+
+    public void Set_Road_Active()
+    {
+        Hidden_Road.SetActive(true);
+        Unused_Wall.SetActive(false);
+    }
+
+    [Header("关于鸡人的变量")]
+    public GameObject Shawty;//鸡人
+    public bool Shawty_Dialog;//是否进入最后的鸡人对话
+
+    public void Enter_Shawty_Dialog()
+    {
+        Shawty_Dialog = true;
+    }
+    [Header("混沌特效")]
+    public Material Glitch_Material;
+
+
+    [Header("关于毒区的相关设定")]
+    public bool Poison_Dialog_On;
+    public List<GameObject> Poison_Dialog_Zone;
+
+    public void Enter_Poison_Dialog()
+    {
+        Poison_Dialog_On = true;
+    }
+    public void Destroy_All_Poison_Dialog()
+    {
+        for(int i=0;i<Poison_Dialog_Zone.Count;i++)
+        {
+            Poison_Dialog_Zone[i].SetActive(false);
+        }
+    }
+
+    [Header("关于镜子的相关设定")]
+    public bool Mirror_Dialog_1;
+    public bool Mirror_Dialog_2;
+    public GameObject Curtain_Dialog;//黑幕对话
+    public GameObject Normal_Dialog;//黑幕对话后的回复对话
+    public void Enter_Mirror_Dialog_1()
+    {
+        Mirror_Dialog_1 = true;
+    }
+    public void Enter_Mirror_Dialog_2()
+    {
+        Mirror_Dialog_2 = true;
+    }
+
+    [Header("关于最后空气墙的相关障碍")]
+    public GameObject Cliff_1;
+    public GameObject Cliff_2;
+
+
+    public override void Start()
+    {
+        GameObject.Find("Canvas").GetComponent<Audio_Player>().Play(4);
+    }
+
 }

@@ -11,7 +11,10 @@ public class End_Point : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-
+        if(other.gameObject.GetComponent<Player>()==null)
+        {
+            return;
+        }
         //Debug.Log("Enter End_Point");
         //到这里就出发了关卡的结束事件了
         Current_Level_Controller.End_Event();

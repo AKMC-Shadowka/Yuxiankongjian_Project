@@ -109,6 +109,187 @@ public class Level_5_Controller : Level_Controller
     {
 
         GameObject.Find("Character").GetComponent<Player>().Effective_Move = true;
+        
+        if(Enter_Diary_1==true)
+        {
+            Enter_Diary_1 = false;
+            GameObject.Find("Canvas").GetComponent<UI_Controller>().Curtain_Show = false;
+            GameObject.Find("Canvas").GetComponent<UI_Controller>().UI_Refresh();
+            Comment_1.GetComponent<Activity_Dialog>().Start_Dialog();
+            return;
+        }
+
+        if (Enter_Diary_2 == true)
+        {
+            Enter_Diary_2 = false;
+            GameObject.Find("Canvas").GetComponent<UI_Controller>().Curtain_Show = false;
+            GameObject.Find("Canvas").GetComponent<UI_Controller>().UI_Refresh();
+            Comment_2.GetComponent<Activity_Dialog>().Start_Dialog();
+            return;
+        }
+
+        if (Enter_Diary_3 == true)
+        {
+            Enter_Diary_3= false;
+            GameObject.Find("Canvas").GetComponent<UI_Controller>().Curtain_Show = false;
+            GameObject.Find("Canvas").GetComponent<UI_Controller>().UI_Refresh();
+            Comment_3.GetComponent<Activity_Dialog>().Start_Dialog();
+            return;
+        }
+
+        if(Final_Choice==true)
+        {
+            Final_Choice = false;
+            GameObject.Find("Canvas").GetComponent<UI_Controller>().Final_Choice_Show = true;
+            GameObject.Find("Canvas").GetComponent<UI_Controller>().UI_Refresh();
+            GameObject.Find("Character").GetComponent<Player>().Effective_Move = false;
+            return;
+        }
+
+
+
     }
+
+
+    [Header("关于最后三个结局玩家能看到多少")]
+    public GameObject Diary_1;
+    public GameObject Diary_2;
+    public GameObject Diary_3;
+
+
+    public Bag Current_Bag;
+
+    public void Set_Diary_Show()
+    {
+        //不仅要确认哪里的日记显示，哪里的不显示，还要做一件事，那就是修改FinalChoice下面的三个选项是否显示
+
+        GameObject Choice_1 = GameObject.Find("Canvas").GetComponent<UI_Controller>().Final_Choice_UI.transform.GetChild(0).gameObject;
+        GameObject Choice_2 = GameObject.Find("Canvas").GetComponent<UI_Controller>().Final_Choice_UI.transform.GetChild(1).gameObject;
+        GameObject Choice_3 = GameObject.Find("Canvas").GetComponent<UI_Controller>().Final_Choice_UI.transform.GetChild(2).gameObject;
+
+        if (
+            Current_Bag.Find("封魂罐")
+            &&
+            Current_Bag.Find("桃木楔")
+            &&
+            Current_Bag.Find("剪刀")
+            )
+        {
+            Diary_1.SetActive(true);
+            Choice_1.SetActive(true);
+        }
+        else
+        {
+            Diary_1.SetActive(false);
+            Choice_1.SetActive(false);
+        }
+
+        if (
+            Current_Bag.Find("嫁衣")
+            &&
+            Current_Bag.Find("定魂锁")
+            &&
+            Current_Bag.Find("罗盘")
+            )
+        {
+            Diary_2.SetActive(true);
+            Choice_2.SetActive(true);
+        }
+        else
+        {
+            Diary_2.SetActive(false);
+            Choice_2.SetActive(false);
+        }
+
+        if (
+            Current_Bag.Find("绝笔信")
+            &&
+            Current_Bag.Find("手帕")
+            &&
+            Current_Bag.Find("玉簪")
+            )
+        {
+            Diary_3.SetActive(true);
+            Choice_3.SetActive(true);
+        }
+        else
+        {
+            Diary_3.SetActive(false);
+            Choice_3.SetActive(false);
+        }
+
+
+    }
+
+    public override void Start()
+    {
+       Set_Diary_Show();
+
+        GameObject.Find("Canvas").GetComponent<Audio_Player>().Play(4);
+    }
+
+    [Header("一二三对话的相关变量")]
+    public bool Enter_Diary_1;
+    public bool Enter_Diary_2;
+    public bool Enter_Diary_3;
+
+    public GameObject Comment_1;
+    public GameObject Comment_2;
+    public GameObject Comment_3;
+
+    public void Enter_Diary_Dialog_1()
+    {
+        Enter_Diary_1 = true;
+    }
+
+    public void Enter_Diary_Dialog_2()
+    {
+        Enter_Diary_2 = true;
+    }
+
+    public void Enter_Diary_Dialog_3()
+    {
+        Enter_Diary_3 = true;
+    }
+
+    [Header("最后一条结局相关变量")]
+    public Dialog End_Dialog_1;
+    public Dialog End_Dialog_2;
+    public Dialog End_Dialog_3;
+
+    public bool Final_Choice;//是否进行最终选择
+
+    public Activity_Dialog Final_Activity_Dialog;
+
+    public void Enter_Final_Choice()
+    {
+        Final_Choice = true;
+    }
+
+    public void Set_Final_Dialog(int index)
+    {
+        if(index==1)
+        {
+            Final_Activity_Dialog.Current_Dialog = End_Dialog_1;
+        }
+
+        if (index == 2)
+        {
+            Final_Activity_Dialog.Current_Dialog = End_Dialog_2;
+        }
+
+        if (index == 3)
+        {
+            Final_Activity_Dialog.Current_Dialog = End_Dialog_3;
+        }
+    }
+
+    [Header("关于结局的相关动画")]
+    public bool Final_Dialog;
+    public void Enter_Final_Dialog()
+    {
+
+    }
+
 
 }

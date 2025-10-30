@@ -16,7 +16,7 @@ public class Main_Menu_Controller : MonoBehaviour
     public void Start_Button_Click()
     {
 
-        if(Global_Controller_Component.Current_Level_Num == -1)
+        if(Global_Controller_Component.Current_Level_Num == -2)
         {
             //防止2次连点造成Bug
             return;
@@ -24,7 +24,7 @@ public class Main_Menu_Controller : MonoBehaviour
 
 
         //此处应该先进入教学关卡，所以应该把Current_Level_Num=-1
-        Global_Controller_Component.Current_Level_Num = -1;
+        Global_Controller_Component.Current_Level_Num = -2;
         
 
 
@@ -40,7 +40,7 @@ public class Main_Menu_Controller : MonoBehaviour
 
         UI_Controller_Component.UI_Refresh();
         // 异步加载新场景
-        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Level_Tutorial", LoadSceneMode.Additive);
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Level_-2", LoadSceneMode.Additive);
 
         // 等待加载完成
         while (!loadOperation.isDone)
@@ -49,7 +49,7 @@ public class Main_Menu_Controller : MonoBehaviour
         }
 
         // 设置新加载的场景为活动场景
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_Tutorial"));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_-2"));
 
         // 现在可以安全地卸载主菜单场景
         SceneManager.UnloadSceneAsync("Main_Menu");

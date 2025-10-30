@@ -25,6 +25,17 @@ public class Chase_Controller : MonoBehaviour
         Current_Time = 0f;
     }
 
+    public void End_Perform()
+    {
+        Chase_On = false;
+        Current_Time = 0f;
+
+        UI_Controller UI_C = GameObject.Find("Canvas").GetComponent<UI_Controller>();
+        UI_C.Blood_Show = false;
+        UI_C.Chase_Show = false;
+        UI_C.UI_Refresh();
+    }
+
     public void Update()
     {
         if(Chase_On==false)

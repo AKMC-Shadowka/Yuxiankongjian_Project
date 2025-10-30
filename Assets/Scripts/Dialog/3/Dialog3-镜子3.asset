@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06138dd36b163548b97e378f414deca, type: 3}
+  m_Name: "Dialog3-\u955C\u5B503"
+  m_EditorClassIdentifier: 
+  Dialog_Ele:
+  - Name: "\u6797\u6653\u6708"
+    Img: {fileID: 0}
+    Human: {fileID: 21300000, guid: ab069f5a138a5764a98d52d03296c2f8, type: 3}
+    Content: "\uFF08\u97E6\u963F\u864E\u548C\u962E\u6E05\u6885\uFF1F\u96BE\u9053\u521A\u624D\u90A3\u4E2A\u9B3C\u53EB\u962E\u6E05\u6885\u5417\uFF1F\uFF09"
+    Sound: {fileID: 0}
+  - Name: "\u6797\u6653\u6708"
+    Img: {fileID: 0}
+    Human: {fileID: 21300000, guid: ab069f5a138a5764a98d52d03296c2f8, type: 3}
+    Content: "(\u955C\u5B50\u788E\u88C2\uFF0C\u65C1\u8FB9\u7684\u5730\u4E0A\u51ED\u7A7A\u591A\u4E86\u4E2A\u6843\u6728\u6954)"
+    Sound: {fileID: 0}
+  - Name: "\u6797\u6653\u6708"
+    Img: {fileID: 0}
+    Human: {fileID: 21300000, guid: ab069f5a138a5764a98d52d03296c2f8, type: 3}
+    Content: "\u5443...\u521A\u624D\u8FD8\u6CA1\u6709\u5462\uFF0C\u600E\u4E48\u8FD9\u4F1A\u513F\u5C31\u6709\u4E86...\u6B64\u7269\u7EDD\u975E\u5BFB\u5E38\uFF0C\u5148\u653E\u5305\u91CC\u3002"
+    Sound: {fileID: 0}
+  - Name: "\u6797\u6653\u6708"
+    Img: {fileID: 0}
+    Human: {fileID: 21300000, guid: ab069f5a138a5764a98d52d03296c2f8, type: 3}
+    Content: "(\"\u83B7\u5F97\u91CD\u8981\u9053\u5177\u2018\u6843\u6728\u6954\u2019\")"
+    Sound: {fileID: 0}

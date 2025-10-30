@@ -8,6 +8,8 @@ public class Level_Tutorial : Level_Controller
 {
     public GameObject Current_Character;
 
+    public Dialog Start_Dialog;//开始关卡的对话
+
     //关于如何退出这个界面返回Main_Menu
     public void Exit_Button_Click()
     {
@@ -81,5 +83,30 @@ public class Level_Tutorial : Level_Controller
         Disactive_Wall.SetActive(false);
     }
 
+    public override void End_Dialog()
+    {
+        Debug.Log("End Dialog");
+        GameObject.Find("Character").GetComponent<Player>().Effective_Move = true;
+        Debug.Log("In End Dialog Effect_Move="+ GameObject.Find("Character").GetComponent<Player>().Effective_Move);
+        
+    }
+
+    public IEnumerator End_Dialog_2()
+    {
+        //对于第一件事没有办完的重新补办
+        yield return new WaitForSeconds(0.03f);
+        GameObject.Find("Character").GetComponent<Player>().Effective_Move = true;
+
+    }
+
+    public override void Start()
+    {
+        //新的初始化工作，对于Level_Tutorial而言，需要触发新的对话，然后怎么怎么样
+        gameObject.GetComponent<Activity_Dialog>().Current_Dialog = Start_Dialog;
+        gameObject.GetComponent<Activity_Dialog>().Start_Dialog();
+
+
+        GameObject.Find("Canvas").GetComponent<Audio_Player>().Play(5);
+    }
 
 }

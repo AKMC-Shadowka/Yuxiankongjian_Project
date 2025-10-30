@@ -65,4 +65,52 @@ public class Level_4_Controller : Level_Controller
 
         SceneManager.UnloadScene("Level_4");
     }
+
+
+    public override void End_Dialog()
+    {
+
+        GameObject.Find("Character").GetComponent<Player>().Effective_Move = true;
+
+
+        if(Story_Dialog_1==true)
+        {
+            Story_Dialog_1 = false;
+            Story_Dialog_2 = true;
+            Curtain_Dialog.GetComponent<Activity_Dialog>().Start_Curtain_Dialog();
+            return;
+        }
+
+        if(Story_Dialog_2==true)
+        {
+            Story_Dialog_2 = false;
+            GameObject canvas = GameObject.Find("Canvas");
+
+            canvas.GetComponent<UI_Controller>().Curtain_Show = false;
+            canvas.GetComponent<UI_Controller>().UI_Refresh();
+
+            Normal_Dialog.GetComponent<Activity_Dialog>().Start_Dialog();
+            return;
+        }
+    }
+
+
+    [Header("关于生平的相关设定")]
+    public bool Story_Dialog_1;
+    public bool Story_Dialog_2;
+    public GameObject Curtain_Dialog;//黑幕对话
+    public GameObject Normal_Dialog;//黑幕对话后的回复对话
+    public void Enter_Story_Dialog_1()
+    {
+        Story_Dialog_1 = true;
+    }
+    public void Enter_Story_Dialog_2()
+    {
+        Story_Dialog_2 = true;
+    }
+
+    public override void Start()
+    {
+        GameObject.Find("Canvas").GetComponent<Audio_Player>().Play(5);
+    }
 }

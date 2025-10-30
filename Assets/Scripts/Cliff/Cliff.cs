@@ -23,7 +23,7 @@ public class Cliff : MonoBehaviour
 
     public IEnumerator Set_Player_Component()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
 
         Player_Component = GameObject.Find("Character").GetComponent<Player>();
     }

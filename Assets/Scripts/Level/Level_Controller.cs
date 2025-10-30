@@ -6,7 +6,10 @@ public class Level_Controller : MonoBehaviour
 {
     //这个类实际上是所有Level_Controller的基类
 
+    public virtual void Start()
+    {
 
+    }
 
     public void Exit_Button_Click()
     {
@@ -20,6 +23,11 @@ public class Level_Controller : MonoBehaviour
     }
 
     public virtual void End_Dialog()
+    {
+
+    }
+
+    public virtual void Dialog_Button_Click(int index)
     {
 
     }

@@ -52,12 +52,15 @@ public class Black_UI : MonoBehaviour
 
     private void Black_UI_Perform()
     {
+
+
         if(Current_Time>=Perform_Time)
         {
             Perform_On = false;
             Current_Time = 0f;
             return;
         }
+
 
         //Í¸Ã÷¶ÈÔËËã
         if(Current_Time<=Perform_Time/2)

@@ -21,8 +21,14 @@ public class Activity_Controller : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        //触发指定活动
 
+        if(other.gameObject.GetComponent<Player>()==null)
+        {
+            return;
+        }
+        //触发指定活动
+        Debug.Log("进入 Activity_Controller.cs");
+        //GameObject.Find("canvas").GetComponent<Black_UI>().Start_Perform();
         Current_Activity_Event.Invoke();
 
         StartCoroutine(Destroy_Self());
@@ -30,7 +36,7 @@ public class Activity_Controller : MonoBehaviour
 
     public IEnumerator Destroy_Self()
     {
-        yield return new WaitForSeconds(5.1f);
+        yield return new WaitForSeconds(2.6f);
         gameObject.SetActive(false);
     }
 }

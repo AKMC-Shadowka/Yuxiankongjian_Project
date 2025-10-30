@@ -16,6 +16,8 @@ public class Level_2_Controller : Level_Controller
     public void Start()
     {
         Start_Chasing = false;
+
+        GameObject.Find("Canvas").GetComponent<Audio_Player>().Play(5);
     }
 
 
@@ -88,10 +90,66 @@ public class Level_2_Controller : Level_Controller
         GameObject.Find("Character").GetComponent<Player>().Effective_Move = true;
         if(Start_Chasing==false)
         {
-
+            Start_Chasing = true;
             Current_Chase_Controller.Start_Perform();
             return;
         }
+
+        if(Shift_On==true&&Shift_Dialog_Over==true)
+        {
+            Shift_On = false;
+            Activate_Hidden();
+            Current_Chase_Controller.End_Perform();
+            return;
+        }
+
+        if(Shawty_Dialog==true)
+        {
+            Shawty_Dialog = false;
+            Shawty.SetActive(false);
+        }
     }
 
-}
+    [Header("鸡鬼")]
+    public GameObject Ghost;
+    public void Set_Ghost_Active()
+    {
+        Ghost.SetActive(true);
+    }
+
+    [Header("是否到了切换模式的时候")]
+    public bool Shift_On;
+    public Activity_Dialog Shift_Dialog;//切换后的对话活动
+    public bool Shift_Dialog_Over;
+    public void Set_Shift_On()
+    {
+        Shift_On = true;
+        Shift_Dialog_Over = false;
+    }
+
+
+    public GameObject Hidden_Object;
+    public GameObject Unused_Wall_1;
+    public GameObject Unused_Wall_2;
+    public void Activate_Hidden()
+    {
+        Hidden_Object.SetActive(true);
+        Unused_Wall_1.SetActive(false);
+        Unused_Wall_2.SetActive(false);
+    }
+
+    [Header("关于鸡人的变量")]
+    public GameObject Shawty;//鸡人
+    public bool Shawty_Dialog;//是否进入最后的鸡人对话
+
+    public void Enter_Shawty_Dialog()
+    {
+        Shawty_Dialog = true;
+    }
+
+
+
+
+
+
+   }

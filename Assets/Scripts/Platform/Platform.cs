@@ -42,7 +42,10 @@ public class Platform : MonoBehaviour
 
         Updown_Move();
     }
-    
+
+
+    public GameObject Tips_Text;
+
 
     //关于平台当前是否有机会进行上下挡位的移动
     public void OnTriggerEnter2D(Collider2D other)
@@ -52,6 +55,11 @@ public class Platform : MonoBehaviour
             Updown_Permission = true;
             Current_Player = other.gameObject;
         }
+        if(Platform_Num>1&&other.gameObject.GetComponent<Player>()!=null)
+        {
+            Tips_Text.SetActive(true);
+        }
+        
     }
 
     public void OnTriggerExit2D(Collider2D other)
@@ -61,6 +69,12 @@ public class Platform : MonoBehaviour
             Updown_Permission = false;
             Current_Player = null;
         }
+
+        if (Platform_Num > 1 && other.gameObject.GetComponent<Player>() != null)
+        {
+            Tips_Text.SetActive(false);
+        }
+
     }
 
 
